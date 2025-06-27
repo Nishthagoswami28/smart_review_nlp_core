@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyze Review - Smart Review Analyzer</title>
+    <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'upload_reviews' %}" class="active">Analyze</a>
+        <a href="{% url 'view_reviews' %}">My Reviews</a>
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Analyze Your Product Review</h1>
+
+    {% if error %}
+        <div style="color: red; margin: 1em auto; text-align: center;">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" style="max-width: 600px; margin: auto;">
+        {% csrf_token %}
+
+        <label for="platform">Select Platform:</label>
+        <select name="platform" id="platform" required style="width: 100%;">
+            <option value="">--Choose Platform--</option>
+            <option value="Amazon">Amazon</option>
+            <option value="Flipkart">Flipkart</option>
+            <option value="Myntra">Myntra</option>
+            <option value="Meesho">Meesho</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="product_name">Product Name:</label>
+        <input type="text" name="product_name" id="product_name" required placeholder="Enter product name" style="width: 100%;">
+
+        <label for="product_image">Upload Product Image (optional):</label>
+        <input type="file" name="product_image" id="product_image" accept="image/*" style="width: 100%;">
+
+
+        <label for="product_url">Product Page URL (optional):</label>
+        <input type="url" name="product_url" id="product_url" placeholder="https://example.com/product" style="width: 100%;">
+
+        <fieldset style="margin-top: 1em;">
+            <legend>Choose How to Provide Reviews:</legend>
+            <label><input type="radio" name="review_input_type" value="file" required> Upload File (.csv or .txt)</label><br>
+            <input type="file" name="uploaded_file" accept=".csv,.txt" style="width: 100%; margin-bottom: 1em;">
+
+            <label><input type="radio" name="review_input_type" value="paste"> Paste Reviews</label><br>
+            <textarea name="pasted_reviews" rows="6" placeholder="Paste reviews here..." style="width: 100%;"></textarea>
+        </fieldset>
+
+        <button type="submit" style="margin-top: 1em;">Analyze Review</button>
+    </form>
+
+    {% if result %}
+        <div class="result-section" style="margin-top: 2em;">
+            {% if image_url %}
+                <h3>Your Product Image:</h3>
+                <img src="{{ image_url }}" alt="Product Image" class="product-image" style="max-width: 100%; max-height: 300px;">
+            {% endif %}
+
+            <h2>Analysis Result</h2>
+            <p><strong>Overall Sentiment:</strong> {{ result.sentiment }}</p>
+
+            <p><strong>Sample Reviews:</strong></p>
+            <div class="review-text" style="background: #f9f9f9; padding: 1em; border-radius: 5px; white-space: pre-wrap;">
+                {{ result.review|linebreaks }}
+            </div>
+
+            <p><strong>Top Keywords:</strong></p>
+            {% if result.keywords %}
+                <ul>
+                    {% for keyword in result.keywords %}
+                        <li>{{ keyword }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No keywords extracted.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</main>
+
+<footer style="text-align: center; margin-top: 2em;">
+    &copy; {{ now|date:"Y" }} Smart Review Analyzer
+</footer>
+
+</body>
+</html>

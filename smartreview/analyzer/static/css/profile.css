@@ -1,0 +1,135 @@
+/* Reset & Base Layout */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #3f51b5;
+    padding: 1rem 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+nav {
+    max-width: 960px;
+    margin: auto;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    background-color: #283593;
+}
+
+main {
+    padding: 2rem 1rem;
+    max-width: 960px;
+    margin: auto;
+}
+
+h1 {
+    color: #3f51b5;
+    margin-bottom: 1.5rem;
+}
+
+.sample-reviews {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.sample-reviews h2 {
+    margin-bottom: 1rem;
+    color: #3f51b5;
+}
+
+.review {
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    border-left: 3px solid #ccc;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    margin-right: 0.5rem;
+    background-color: #3f51b5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #283593;
+}
+
+/* Form styling for edit profile */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+form label {
+    font-weight: bold;
+    color: #3f51b5;
+}
+
+form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 0.7rem;
+    font-size: 1rem;
+    background-color: #3f51b5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #283593;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background-color: #e0e0e0;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+}

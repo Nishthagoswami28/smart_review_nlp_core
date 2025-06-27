@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Reviews - Smart Review Analyzer</title>
+    <link rel="stylesheet" href="{% static 'css/review.css' %}">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'upload_reviews' %}">Analyze New Review</a>
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+</header>
+
+<main>
+    <h1>My Analyzed Reviews</h1>
+
+    {% if reviews %}
+        {% for review in reviews %}
+            <div class="review-box">
+                <h3>{{ review.product_name|default:"Unnamed Product" }} ({{ review.platform|default:"Unknown Platform" }})</h3>
+                <h4>Sentiment: {{ review.sentiment }}</h4>
+
+                {% if review.product_image %}
+                    <img src="{{ review.product_image }}" alt="Product Image" class="product-img">
+                {% comment %} {% else %}
+                    <img src="{% static 'images/watch.jpg' %}" alt="Default Product" class="product-img"> {% endcomment %}
+                {% endif %}
+
+                <p><strong>Review Text:</strong><br> {{ review.text|linebreaks }}</p>
+
+                <p><strong>Keywords:</strong> 
+                    <span class="keywords">
+                        {{ review.keywords }}
+                    </span>
+                </p>
+
+                {% if review.product_url %}
+                    <p><strong>Product URL:</strong> 
+                        <a href="{{ review.product_url }}" target="_blank">
+                            {{ review.product_url }}
+                        </a>
+                    </p>
+                {% endif %}
+
+                <p class="review-meta">
+                    Submitted on {{ review.date_created|date:"F j, Y, g:i a" }}
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-reviews">You haven’t submitted any reviews yet.</p>
+    {% endif %}
+</main>
+
+<footer>
+    &copy; {{ now|date:"Y" }} Smart Review Analyzer
+</footer>
+
+</body>
+</html>

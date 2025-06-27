@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home - Smart Review Analyzer</title>
+    <link rel="stylesheet" href="{% static 'css/styles1.css' %}" />
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'upload_reviews' %}">Analyze</a>
+        <a href="{% url 'view_reviews' %}">My Reviews</a>
+        <a href="{% url 'profile' %}">Profile</a>
+
+        {% if request.session.user_name %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main>
+    
+    {% if user.name %}
+        <h1>Welcome, {{ user.name }}!</h1>
+    {% else %}
+        <h1>Welcome to Smart Review Analyzer</h1>
+    {% endif %}
+
+    <p>This application helps you analyze customer feedback using AI-powered sentiment and keyword extraction tools.</p>
+
+    <blockquote class="quote">
+        “Your most unhappy customers are your greatest source of learning.”<br>
+        <span class="author">— Bill Gates</span>
+    </blockquote>
+
+    <img src="{% static 'images/sample-product.jpg' %}" alt="Sample product reviews" class="sample-image" />
+
+    <section class="sample-reviews">
+        <h2>Sample Product Reviews</h2>
+        <div class="review">
+            <strong>“Absolutely loved it! Fast shipping and excellent quality.”</strong><br>
+            <em>Sentiment:</em> Positive | <em>Keywords:</em> fast shipping, excellent quality
+        </div>
+        <div class="review">
+            <strong>“Poor packaging. Item was damaged.”</strong><br>
+            <em>Sentiment:</em> Negative | <em>Keywords:</em> poor packaging, item damaged
+        </div>
+        <div class="review">
+            <strong>“Decent product. Nothing too special.”</strong><br>
+            <em>Sentiment:</em> Neutral | <em>Keywords:</em> decent product
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; {{ now|date:"Y" }} Smart Review Analyzer
+</footer>
+
+</body>
+</html>

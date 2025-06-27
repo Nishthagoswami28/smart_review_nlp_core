@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+h1 {
+    color: #2a2a2a;
+}
+
+.review-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.review-box h3 {
+    margin: 0 0 10px 0;
+}
+
+.review-meta {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.keywords {
+    color: #2c3e50;
+    font-style: italic;
+}
+
+.product-img {
+    max-width: 300px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+nav {
+    margin-bottom: 30px;
+}
+
+nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.no-reviews {
+    color: #555;
+    font-style: italic;
+}

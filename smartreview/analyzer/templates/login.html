@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - Smart Review Analyzer</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'login' %}" class="active">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Login to Your Account</h1>
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+    
+    <p><a href="{% url 'forgot_password' %}">Forgot Password?</a></p>
+    <p>New to Smart Review Analyzer? <a href="{% url 'register' %}">Click here to register.</a></p>
+</main>
+
+<footer>
+    &copy; {{ now|date:"Y" }} Smart Review Analyzer
+</footer>
+
+</body>
+</html>

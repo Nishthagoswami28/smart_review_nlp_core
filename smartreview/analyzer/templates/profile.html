@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile - Smart Review Analyzer</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'upload_reviews' %}">Upload Reviews</a>
+        <a href="{% url 'view_reviews' %}">My Reviews</a>
+        <a href="{% url 'change_password' %}">Change Password</a>
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Welcome, {{ user.name }}!</h1>
+
+    <div class="sample-reviews">
+        <h2>Your Profile Info</h2>
+
+        <div class="review"><strong>Email:</strong> {{ user.email }}</div>
+        <div class="review"><strong>Phone:</strong> {{ user.phone }}</div>
+        <div class="review"><strong>Address:</strong> {{ user.address }}</div>
+        <div class="review"><strong>City:</strong> {{ user.city }}</div>
+        <div class="review"><strong>State:</strong> {{ user.state }}</div>
+        <div class="review"><strong>Country:</strong> {{ user.country }}</div>
+
+        <div style="margin-top: 2rem;">
+            <a href="{% url 'edit_profile' %}" class="btn">Edit Info</a>
+            <a href="{% url 'change_password' %}" class="btn">Change Password</a>
+            <a href="{% url 'logout' %}" class="btn">Logout</a>
+        </div>
+    </div>
+</main>
+
+<footer>
+    &copy; {{ now|date:"Y" }} Smart Review Analyzer
+</footer>
+
+</body>
+</html>

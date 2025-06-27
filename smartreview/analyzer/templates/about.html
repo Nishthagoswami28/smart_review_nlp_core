@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Smart Review Analyzer</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'upload_reviews' %}">Analyze</a>
+        <a href="{% url 'view_reviews' %}">My Reviews</a>
+        <a href="{% url 'about' %}" class="active">About</a>
+    </nav>
+</header>
+
+<main>
+    <h1>About Smart Review Analyzer</h1>
+
+    <section class="intro">
+        <p>
+            <strong>Smart Review Analyzer</strong> is a user-friendly web application that leverages 
+            <a href="https://en.wikipedia.org/wiki/Natural_language_processing" target="_blank">Natural Language Processing (NLP)</a> 
+            to analyze product reviews. It transforms written feedback into meaningful insights to help individuals and businesses make better decisions.
+        </p>
+
+        <p>
+            Whether you're an online seller looking to enhance product performance, or a curious customer exploring the impact of your words, 
+            Smart Review Analyzer gives you a clear view of the sentiment and key themes in your reviews — all in real-time.
+        </p>
+    </section>
+
+    <section class="features">
+        <h2>Key Features</h2>
+        <ul>
+            <li>🔍 Real-time sentiment analysis (Positive, Negative, Neutral)</li>
+            <li>🧠 Keyword extraction using advanced NLP algorithms</li>
+            <li>📸 Upload and associate product images with reviews</li>
+            <li>📂 View and manage your review history anytime</li>
+        </ul>
+    </section>
+
+    <section class="tech">
+        <h2>Technologies Used</h2>
+        <ul>
+            <li><strong>Django:</strong> Powerful Python web framework for backend development</li>
+            <li><strong>TextBlob:</strong> Simplified NLP library for sentiment analysis</li>
+            <li><strong>RAKE-NLTK:</strong> Keyword extraction based on Rapid Automatic Keyword Extraction</li>
+            <li><strong>HTML/CSS:</strong> Clean and responsive frontend interface</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Start Exploring!</h2>
+        <p>
+            Ready to gain insights from your reviews? 
+            <a href="{% url 'upload_reviews' %}" class="cta-button">Analyze a Review Now</a>
+        </p>
+    </section>
+</main>
+
+<footer>
+    &copy; {{ now|date:"Y" }} Smart Review Analyzer. Built with ❤️ and NLP.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+Flask
+TextBlob
+rake-nltk
+pandas
+Django
+requests
