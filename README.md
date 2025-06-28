@@ -54,7 +54,7 @@ This project is licensed under the MIT License.
 ![Home Page](./smartreview/screenshots/home.png)
 
 ### Upload Section
-![Upload Section](./smartreview/screenshots/upload.png)
+![Upload Section](./smartreview/screenshots/analyze.png)
 
 ### Confirmation Page
 ![Confirmation Page](./smartreview/screenshots/result.png)
